@@ -1,0 +1,13 @@
+# mtplx-mate — M5Burner 发布清单（发布前由 tools/release.py / tools/check_merged.py 校验）
+# 修改版本时同步改这里；bin 必须是真 merged（bootloader + 分区表 + app）。
+project: mtplx-mate
+platform_entries:
+  - name: MTPLX Mate
+    device: StickS3
+    category: Tools
+    version: "0.1.0"
+    bin: releases/mtplx-mate-v0.1.0-merged.bin
+    cover: releases/cover-1280x720-mtplx-mate-sticks3.png
+    project_link: "https://github.com/andjiang0083/mtplx-mate"
+    readback: 未提交
+    github: https://github.com/andjiang0083/mtplx-mate
