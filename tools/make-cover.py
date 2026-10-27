@@ -47,7 +47,7 @@ GREY = (146, 160, 154)
 TARGETS = {
     # hero 帧用 MTP 加速页（MTPLX 独有的卖点），次帧用实时速度页
     "sticks3": ("MTPLX Mate", "cover-1280x720-mtplx-mate-sticks3.png", "sticks3",
-                "device-mtp.png", "device-speed.png"),
+                "device-mtp.png", "device-savings.png"),
 }
 
 
@@ -131,16 +131,25 @@ def compose(key, scale):
     # 背景：右半一块极淡的青绿辉光（设备大数字的颜色，两处同源）
     glow = Image.new("RGB", (w3, h3), BG)
     ImageDraw.Draw(glow).ellipse([int(w3 * 0.50), int(-h3 * 0.18), int(w3 * 1.12), int(h3 * 1.15)],
-                                 fill=(10, 34, 27))
+                                 fill=(38, 26, 8))
     img = Image.blend(img, glow.filter(ImageFilter.GaussianBlur(90 * S // 3)), 0.85)
     d = ImageDraw.Draw(img, "RGBA")
 
     x0 = 62
     texts = []
 
-    def txt(xy, s, f, fill):
-        """记账口径与 mkcover.Canvas 一致：bbox 取 getbbox 在设计空间的真实边界。"""
-        fnt = font(f[0], f[1] * S, f[2] if len(f) > 2 else 0)
+    def txt(xy, s, f, fill, maxw=572):
+        """记账口径与 mkcover.Canvas 一致：bbox 取 getbbox 在设计空间的真实边界。
+        超宽自动降字号（文案长短不该让封面构建失败）。"""
+        size = f[1]
+        idx = f[2] if len(f) > 2 else 0
+        while size > 12:
+            probe = font(f[0], size * S, idx)
+            pb = probe.getbbox(s)
+            if (pb[2] - pb[0]) / S <= maxw:
+                break
+            size -= 2
+        fnt = font(f[0], size * S, idx)
         b = fnt.getbbox(s)
         texts.append({"s": s, "kind": "text", "bbox": [
             int(xy[0] + b[0] / S), int(xy[1] + b[1] / S),
@@ -178,7 +187,7 @@ def compose(key, scale):
         placed = [(front, (int(700 * scale), int(168 * scale)), "主")]
     else:
         back, _ = device(back_name, 1, kind)
-        placed = [(back, (int(946 * scale), int(330 * scale)), "后"),
+        placed = [(back, (int(944 * scale), int(356 * scale)), "后"),
                   (front, (int(672 * scale), int(46 * scale)), "前")]
     for im, (px, py), tag in placed:
         assert px >= 56 * scale and px + im.width <= (W - 56) * scale, "%s一块机身越左右安全边" % tag

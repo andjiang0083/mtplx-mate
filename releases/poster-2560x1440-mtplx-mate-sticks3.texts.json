@@ -1,0 +1,82 @@
+{
+ "entry": "MTPLX Mate",
+ "cover": "releases/poster-2560x1440-mtplx-mate-sticks3.png",
+ "canvas": [
+  1280,
+  720
+ ],
+ "layout": "frame",
+ "hero": {
+  "kind": "frame",
+  "path": "docs/images/device-mtp.png",
+  "px": [
+   480,
+   270
+  ],
+  "scale": 2
+ },
+ "texts": [
+  {
+   "s": "MTPLX MATE",
+   "kind": "text",
+   "bbox": [
+    62,
+    134,
+    633,
+    197
+   ]
+  },
+  {
+   "s": "投机解码到底赚了多少，摆在桌面上",
+   "kind": "text",
+   "bbox": [
+    62,
+    247,
+    590,
+    279
+   ]
+  },
+  {
+   "s": "接受率 · 各档 depth 曲线 · 每次 verify 产出",
+   "kind": "text",
+   "bbox": [
+    86,
+    316,
+    619,
+    343
+   ]
+  },
+  {
+   "s": "实时 tok/s · TTFT · 缓存命中 · 显存",
+   "kind": "text",
+   "bbox": [
+    86,
+    356,
+    548,
+    382
+   ]
+  },
+  {
+   "s": "省钱折算：云端账单对比本地电费",
+   "kind": "text",
+   "bbox": [
+    86,
+    396,
+    461,
+    420
+   ]
+  },
+  {
+   "s": "What speculative decoding really buys you, on a desk screen",
+   "kind": "text",
+   "bbox": [
+    62,
+    455,
+    586,
+    472
+   ]
+  }
+ ],
+ "generator": "tools/mkcover.py",
+ "generated": "2026-10-28T00:04:29"
+}

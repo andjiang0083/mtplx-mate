@@ -501,7 +501,7 @@ static void pageMtp(const Snapshot& s, const DisplayPage& p) {
   const MtpData& m = s.mtp;
   tl(10, 20, T("MTP 加速 · 今日", "MTP speedup · today"), C_TEXT2, F12B);
 
-  char buf[24];
+  char buf[48];
   if (m.valid && m.acc > 0) {
     std::snprintf(buf, sizeof(buf), "%d%%", static_cast<int>(m.acc * 100.0f + 0.5f));
   } else {
@@ -547,7 +547,7 @@ static void pageSpeed(const Snapshot& s, const DisplayPage& p) {
     drawChip(150, 2, T("生成中", "BUSY"), C_TEAL, C_BG);
   }
 
-  char buf[24];
+  char buf[48];
   if (r.valid && r.tps > 0) std::snprintf(buf, sizeof(buf), "%.0f", static_cast<double>(r.tps));
   else std::snprintf(buf, sizeof(buf), "--");
   drawHeroWithUnit(buf, "tok/s", C_TEAL2);
